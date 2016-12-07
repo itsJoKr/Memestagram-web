@@ -93,7 +93,8 @@ body {
   text-overflow: ellipsis;
 }
 .header-image {
-  width: 120px;
+  margin: 20px;
+  width: 80px;
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -138,4 +139,8 @@ body {
 
 .empty-fill {
   height: 78px;
+}
+
+.meme-card {
+  padding-top: 20px;
 }

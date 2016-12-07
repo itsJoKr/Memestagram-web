@@ -1,0 +1,28 @@
+.meme-img {
+  height: 400px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0px 3px 5px -3px gray;
+  -webkit-box-shadow: 0px 3px 5px -3px gray;
+  -moz-box-shadow: 0px 3px 5px -3px gray;
+  z-index: 2;
+  position: relative;
+}
+
+.meme-card-desc {
+  position: relative;
+  top: -5px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 0 auto;
+  color: black;
+  font-family: Oswald, serif;
+  font-weight: 500;
+  background-color: #ffeb3b;
+  box-shadow: 0px 5px 8px -3px gray;
+  -webkit-box-shadow: 0px 5px 8px -3px gray;
+  -moz-box-shadow: 0px 5px 8px -3px gray;
+  z-index: 6;
+}
