@@ -26,3 +26,18 @@
   -moz-box-shadow: 0px 5px 8px -3px gray;
   z-index: 6;
 }
+
+.meme-icon {
+  font-size: 125%;
+  color: #4B4832;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.meme-icon:hover {
+  color: #0f0f0f;
+}
+
+.actions-right {
+  text-align: right;
+}
