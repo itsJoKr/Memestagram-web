@@ -1,19 +1,14 @@
 export class ThisUser {
-  constructor (private name: string, private uid: string, private type: LoginType) {
+  $key: string;
+  name: string;
+  type: LoginType;
 
+  constructor(uid, name, type) {
+    this.$key = uid;
+    this.name = name;
+    this.type = type;
   }
 
-  public getName() {
-    return this.name;
-  }
-
-  public getUid() {
-    return this.uid;
-  }
-
-  public getLoginType() {
-    return this.type;
-  }
 }
 
 export enum LoginType {

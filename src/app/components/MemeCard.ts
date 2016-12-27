@@ -1,12 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Meme} from "../models/Meme";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'meme-card',
   styleUrls: ['../../assets/css/meme.css'],
   template: `
   <span>
-      <img class="meme-img" src="../../assets/images/{{img}}" alt="Sample meme">
+      <img (click)="openMemePage()" class="meme-img" src="../../assets/images/{{img}}" alt="Sample meme">
       <!--<meme-card-desc></meme-card-desc>-->
       <div class="meme-card-desc row">
         <div class="col-xs-8">{{meme.title}}</div>
@@ -17,11 +18,15 @@ import {Meme} from "../models/Meme";
 export class MemeCard implements OnInit{
   @Input() meme: Meme;
   private img: string;
-  private imgs = ['aliens.jpg', 'matrixmeme.jpg', 'picardwtf.png'];
+  private tempImgs = ['aliens.jpg', 'matrixmeme.jpg', 'picardwtf.png'];
 
-  constructor() {
+  constructor(private router: Router) {
     let randIndex = Math.floor((Math.random() * 3));
-    this.img = this.imgs[randIndex];
+    this.img = this.tempImgs[randIndex];
+  }
+
+  private openMemePage() {
+    // this.router.navigate('/meme/' + this);
   }
 
   ngOnInit(): void {

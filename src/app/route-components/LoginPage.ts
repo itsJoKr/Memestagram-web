@@ -3,10 +3,11 @@
  */
 import {Component, OnInit} from '@angular/core';
 import {AngularFire, AuthProviders, AuthMethods} from "angularfire2";
-import * as generator from "username-generator";
 import {AuthService} from "../services/AuthService";
 import {LoginType} from "../models/ThisUser";
 import {Router} from "@angular/router";
+
+let generator = require('username-generator');
 
 @Component({
   selector: 'login-page',
@@ -14,7 +15,7 @@ import {Router} from "@angular/router";
     <div class="card">
           <div>Login here:</div>
           <input [(ngModel)]="unameInput" type="text" #uname/>
-          <button md-raised-button (click)="loginAnon(uname)">LOGIN AS ANON</button>
+          <button md-raised-button (click)="loginAnon(uname.value)">LOGIN AS ANON</button>
     </div>`
 })
 export class LoginPage implements OnInit{
@@ -36,7 +37,9 @@ export class LoginPage implements OnInit{
       method: AuthMethods.Anonymous,
     });
 
-    this.as.loginUser(u.uid, uname, LoginType.Anon);
+    console.log('LOGIN', u);
+
+    this.as.loginAsNewAnon(u, uname, LoginType.Anon);
     this.router.navigate(['./memes/dank']);
 
   }

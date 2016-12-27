@@ -17,11 +17,12 @@ import {MessagesPage} from "./route-components/MessagesPage";
 import {SearchPage} from "./route-components/SearchPage";
 import {HelpPage} from "./route-components/HelpPage";
 import {LoginPage} from "./route-components/LoginPage";
-import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
+import {AngularFireModule, AuthProviders, AuthMethods, AngularFire} from "angularfire2";
 import {MemeService} from "./services/MemeService";
 import {MaterialModule} from "@angular/material";
 import {AuthService} from "./services/AuthService";
 import {AuthGuard} from "./guards/AuthGuard";
+import {MemePage} from "./route-components/MemePage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAjKU0fqwBzsBGWPL6-_fhLWm1U2DaZQ_k",
@@ -38,7 +39,7 @@ const firebaseAuthConfig = {
 
 @NgModule({
   declarations: [
-    Root, Header, MemesList, ScrollSpyAffixDirective, NotFoundPage,
+    Root, Header, MemesList, ScrollSpyAffixDirective, NotFoundPage, MemePage,
     MemeCard, MemeCardDescription, MessagesPage, ProfilePage, SearchPage, HelpPage, LoginPage
   ],
   imports: [
@@ -52,6 +53,7 @@ const firebaseAuthConfig = {
       {path: '', redirectTo: 'memes/dank', pathMatch: 'full', canActivate: [AuthGuard]},
       {path: 'login', component: LoginPage},
       {path: 'memes/:type', component: MemesList, canActivate: [AuthGuard]},
+      {path: 'meme/:uid', component: MemePage, canActivate: [AuthGuard]},
       {path: 'profile', component: ProfilePage, canActivate: [AuthGuard]},
       {path: 'messages', component: MessagesPage, canActivate: [AuthGuard]},
       {path: 'search', component: SearchPage, canActivate: [AuthGuard]},
@@ -62,4 +64,9 @@ const firebaseAuthConfig = {
   providers: [MemeService, AuthService, AuthGuard],
   bootstrap: [Root]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(af: AngularFire) {
+
+  }
+}

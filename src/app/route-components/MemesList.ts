@@ -25,9 +25,6 @@ export class MemesList {
     this.memes = ms.getDankMemes();
   }
 
-  private ping() {
-    this.as.ping();
-  }
 
   private setType(type: string) {
     if (type=='dank' || type=='subbed' || type=='fresh' || type=='random'){
