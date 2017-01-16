@@ -1,11 +1,11 @@
 export class ThisUser {
   $key: string;
-  name: string;
+  username: string;
   type: LoginType;
 
   constructor(uid, name, type) {
     this.$key = uid;
-    this.name = name;
+    this.username = name;
     this.type = type;
   }
 

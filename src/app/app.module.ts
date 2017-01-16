@@ -25,11 +25,11 @@ import {AuthGuard} from "./guards/AuthGuard";
 import {MemePage} from "./route-components/MemePage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjKU0fqwBzsBGWPL6-_fhLWm1U2DaZQ_k",
-  authDomain: "web-quickstart-1bd39.firebaseapp.com",
-  databaseURL: "https://web-quickstart-1bd39.firebaseio.com",
-  storageBucket: "web-quickstart-1bd39.appspot.com",
-  messagingSenderId: "661525560495"
+  apiKey: "AIzaSyA_7Jftdob1bKxNdcVeNqPt8JVXnH-Uce0",
+  authDomain: "memestagram-1767b.firebaseapp.com",
+  databaseURL: "https://memestagram-1767b.firebaseio.com",
+  storageBucket: "memestagram-1767b.appspot.com",
+  messagingSenderId: "307006923051"
 };
 
 const firebaseAuthConfig = {

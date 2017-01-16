@@ -12,11 +12,23 @@ let generator = require('username-generator');
 @Component({
   selector: 'login-page',
   template: `
-    <div class="card">
-          <div>Login here:</div>
-          <input [(ngModel)]="unameInput" type="text" #uname/>
-          <button md-raised-button (click)="loginAnon(uname.value)">LOGIN AS ANON</button>
-    </div>`
+    <div class="row">
+      <div class="login-card col-xs-6">
+            <div>Login here as gentleman:</div>
+            <input [(ngModel)]="unameInput" type="text" #uname2/>
+            <button md-raised-button (click)="loginGoogle(uname2.value)">
+              <img src="../../assets/images/g-logo.png"/>
+              ENTLEMAN
+            </button>
+      </div>
+      <div class="login-card col-xs-6">
+            <div>Login here as pleb:</div>
+            <input [(ngModel)]="unameInput" type="text" #uname/>
+            <button md-raised-button (click)="loginAnon(uname.value)">LOGIN AS PLEB</button>
+      </div>
+    
+    </div>
+    `
 })
 export class LoginPage implements OnInit{
   private unameInput;
@@ -29,6 +41,16 @@ export class LoginPage implements OnInit{
     this.unameInput = generator.generateUsername("-")
   }
 
+  private loginGoogle(uname: string) {
+    if (uname.length < 0) return;
+
+    var u:any = this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
+    });
+    this.as.loginWithGoogle(u, uname);
+  }
+
   private loginAnon(uname: string) {
     if (uname.length < 0) return;
 
@@ -36,11 +58,7 @@ export class LoginPage implements OnInit{
       provider: AuthProviders.Anonymous,
       method: AuthMethods.Anonymous,
     });
-
-    console.log('LOGIN', u);
-
-    this.as.loginAsNewAnon(u, uname, LoginType.Anon);
-    this.router.navigate(['./memes/dank']);
+    this.as.loginAsNew(u, uname, LoginType.Anon);
 
   }
 }

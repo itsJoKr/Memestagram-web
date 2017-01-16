@@ -16,7 +16,7 @@ export class ProfilePage {
 
 
   constructor(private as: AuthService) {
-    as.getUserPromise().then(a=> this.username=a.name);
+    as.getUserPromise().then(a=> this.username=a.username);
   }
 
   private logout() {

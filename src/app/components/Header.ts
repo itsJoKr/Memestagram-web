@@ -73,7 +73,7 @@ export class Header {
 
   constructor(private as: AuthService) {
     this.as.getUserPromise().then(u=>{
-      this.setLoggedInMarquee(u.name);
+      this.setLoggedInMarquee(u.username);
     });
 
     this.as.authObservable().subscribe(u => {
@@ -84,7 +84,7 @@ export class Header {
     );
 
     this.as.getUserObservable().subscribe(u=>{
-     this.setLoggedInMarquee(u.name);
+     this.setLoggedInMarquee(u.username);
     });
   }
 

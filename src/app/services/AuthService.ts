@@ -3,6 +3,7 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from "ang
 import {LoginType, ThisUser} from "../models/ThisUser";
 import {Router} from "@angular/router";
 import {Subject, Observable} from "rxjs";
+import {error} from "util";
 
 @Injectable()
 export class AuthService {
@@ -19,6 +20,11 @@ export class AuthService {
       then: (onFulfill, onReject) => {
         if (this.user == null) {
           this.af.auth.subscribe(u => {
+            if (u == null) {
+              console.log("Not logged in");
+              return;
+            }
+
             this.af.database.object('/users/' + u.uid).subscribe(
               value=> {this.user = value;
                 console.log(this.user);
@@ -42,14 +48,20 @@ export class AuthService {
     return this.af.auth;
   }
 
-  public loginAsNewAnon(userPromise: Promise<any>, name: string, type: LoginType) {
+  public loginAsNew(userPromise: Promise<any>, name: string, type: LoginType) {
     userPromise.then(u=> {
       console.log('userPromsie', u);
       this.user = new ThisUser(name, u.uid, type);
       this.loginUserObservable.next(this.user);
+      console.log('uid: ', u.uid);
       let userRef = this.af.database.object('/users/' + u.uid);
-      userRef.update({"name": name, "type": type}).then(_ => this.router.navigate(['/']));
+      userRef.update({"username": name, "type": type}).then(_ => this.router.navigate(['/']));
+      this.router.navigate(['./memes/dank']);
     });
+  }
+
+  public loginWithGoogle(userPromise: Promise<any>, name: string) {
+    this.loginAsNew(userPromise, name, LoginType.Google);
   }
 
   public logout() {

@@ -146,3 +146,12 @@ body {
 .meme-card {
   padding-top: 20px;
 }
+
+.login-card {
+  width: 40%;
+  margin: 2.5%;
+  background-color: #fff;
+  border: lightgray 1px solid;
+  border-radius: 3px;
+  padding: 20px;
+}
