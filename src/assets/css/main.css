@@ -1,6 +1,8 @@
 body {
   font-family: Verdana, serif;
-  background-color: #efefef;
+  background-color: #e0e0e0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -10,26 +12,19 @@ body {
   src: local('Billabong'), url('../Billabong.woff') format('woff');
 }
 @font-face {
-  font-family: 'Oswald';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Oswald'), url('../Oswald-Light.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Oswald';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Oswald'), url('../Oswald-Regular.ttf') format('truetype');
-}
-@font-face {
   font-family: 'Roboto';
   font-style: normal;
   src: local('Roboto'), url('../Roboto-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'RobotoSlab';
+  font-family: 'Roboto-Light';
   font-style: normal;
-  src: local('RobotoSlab'), url('../RobotoSlab-Regular.ttf') format('truetype');
+  src: local('Roboto'), url('../Roboto-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Condensed';
+  font-style: normal;
+  src: local('Roboto'), url('../RobotoCondensed-Regular.ttf') format('truetype');
 }
 
 /* Header stuff*/
@@ -48,7 +43,7 @@ body {
   position: fixed;
   top: 0px;
   transition: opacity 250ms;
-  background-color: #ffeb3b;
+  background-color: #212121;
   width: 100%;
   -webkit-box-shadow: 0px 5px 8px -3px gray;
   -moz-box-shadow: 0px 5px 8px -3px gray;
@@ -59,6 +54,7 @@ body {
 .header {
   background-color: #ffeb3b;
   z-index: 5;
+  padding-right: 0px;
   -webkit-box-shadow: 0px 5px 8px -3px gray;
   -moz-box-shadow: 0px 5px 8px -3px gray;
   box-shadow: 0px 5px 8px -3px gray;
@@ -106,15 +102,16 @@ body {
   margin-right: 20px;
   cursor: pointer;
   transition: color 0.2s;
+  color: #ffeb3b;
 }
 
 .collapse-header-title:hover {
-  color: #303f9f;
+  color: #ffffff;
 }
 
 .collapse-header-item {
   font-size: 120%;
-  color: #4B4832;
+  color: #ffffff;
   text-align: center;
   font-family: Roboto, serif;
   font-weight: 300;
@@ -130,12 +127,12 @@ body {
 }
 
 .marquee-container {
-  background-color: black;
+  background-color: #212121;
 }
 
 .marquee-text {
-  color: #ffeb3b;
-  font-family: RobotoSlab, serif;
+  color: #fff;
+  font-family: Roboto-Condensed, serif;
   font-weight: 300;
 }
 

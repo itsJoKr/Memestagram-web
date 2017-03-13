@@ -13,14 +13,14 @@
 
 .meme-card-desc {
   position: relative;
-  width: 300px;
+  width: 340px;
   padding: 10px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 6px 6px;
   margin: 0 auto;
   color: black;
-  font-family: Oswald, serif;
+  font-family: Roboto, serif;
   font-weight: 500;
-  background-color: #ffeb3b;
+  background-color: #fff;
   box-shadow: 0px 5px 8px -3px gray;
   -webkit-box-shadow: 0px 5px 8px -3px gray;
   -moz-box-shadow: 0px 5px 8px -3px gray;
@@ -29,15 +29,57 @@
 
 .meme-icon {
   font-size: 125%;
-  color: #4B4832;
+  color: #212121;
   cursor: pointer;
   transition: color 200ms;
 }
 
 .meme-icon:hover {
-  color: #0f0f0f;
+  color: #ffeb3b;
 }
 
 .actions-right {
   text-align: right;
+}
+
+.comments-container {
+  margin-top: 18px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 8px -3px gray;
+  -moz-box-shadow: 0px 5px 8px -3px gray;
+  box-shadow: 0px 5px 8px -3px gray;
+}
+
+.comment-input {
+  padding: 4px;
+}
+
+.comment {
+  padding: 4px;
+  font-family: Roboto, serif;
+}
+
+.poster {
+  font-family: Roboto-Light, serif;
+  border-bottom: 1px solid lightgray;
+  font-weight: 300;
+  padding: 4px;
+}
+
+.meme-card-poster {
+  position: relative;
+  width: 340px;
+  padding: 10px;
+  border-radius: 6px 6px 6px 6px;
+  margin: 12px auto 0;
+  color: black;
+  font-family: Roboto, serif;
+  font-weight: 500;
+  background-color: #fff;
+  box-shadow: 0px 5px 8px -3px gray;
+  -webkit-box-shadow: 0px 5px 8px -3px gray;
+  -moz-box-shadow: 0px 5px 8px -3px gray;
+  z-index: 6;
 }

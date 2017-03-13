@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {RouterModule}   from '@angular/router';
+import {RouterModule, ActivatedRouteSnapshot}   from '@angular/router';
 import {ScrollSpyAffixDirective} from "ng2-scrollspy/src/plugin/affix.directive"
 import {ScrollSpyModule} from 'ng2-scrollspy';
 
@@ -23,6 +23,11 @@ import {MaterialModule} from "@angular/material";
 import {AuthService} from "./services/AuthService";
 import {AuthGuard} from "./guards/AuthGuard";
 import {MemePage} from "./route-components/MemePage";
+import {MemeResolver} from "./guards/MemeResolver";
+import {CommentCard} from "./components/CommentCard";
+import {SocialService} from "./services/SocialService";
+import {UserResolver} from "./guards/UserResolver";
+import {UserPage} from "./route-components/UserPage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA_7Jftdob1bKxNdcVeNqPt8JVXnH-Uce0",
@@ -40,7 +45,8 @@ const firebaseAuthConfig = {
 @NgModule({
   declarations: [
     Root, Header, MemesList, ScrollSpyAffixDirective, NotFoundPage, MemePage,
-    MemeCard, MemeCardDescription, MessagesPage, ProfilePage, SearchPage, HelpPage, LoginPage
+    MemeCard, MemeCardDescription, MessagesPage, ProfilePage, SearchPage, HelpPage, LoginPage,
+    CommentCard, UserPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,8 @@ const firebaseAuthConfig = {
       {path: '', redirectTo: 'memes/dank', pathMatch: 'full', canActivate: [AuthGuard]},
       {path: 'login', component: LoginPage},
       {path: 'memes/:type', component: MemesList, canActivate: [AuthGuard]},
-      {path: 'meme/:uid', component: MemePage, canActivate: [AuthGuard]},
+      {path: 'meme/:uid', component: MemePage, canActivate: [AuthGuard], resolve: [MemeResolver]},
+      {path: 'user/:uid', component: UserPage, canActivate: [AuthGuard], resolve: [UserResolver]},
       {path: 'profile', component: ProfilePage, canActivate: [AuthGuard]},
       {path: 'messages', component: MessagesPage, canActivate: [AuthGuard]},
       {path: 'search', component: SearchPage, canActivate: [AuthGuard]},
@@ -61,7 +68,7 @@ const firebaseAuthConfig = {
       {path: '**', component: NotFoundPage},
     ])
   ],
-  providers: [MemeService, AuthService, AuthGuard],
+  providers: [MemeService, AuthService, SocialService, AuthGuard, MemeResolver, UserResolver,],
   bootstrap: [Root]
 })
 export class AppModule {

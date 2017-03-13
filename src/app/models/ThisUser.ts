@@ -3,6 +3,7 @@ export class ThisUser {
   username: string;
   type: LoginType;
 
+
   constructor(uid, name, type) {
     this.$key = uid;
     this.username = name;
